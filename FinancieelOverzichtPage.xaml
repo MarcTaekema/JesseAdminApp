@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="JesseAdminApp.FinancieelOverzichtPage"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
+
+    <VerticalStackLayout Spacing="25" Padding="30">
+        <Label Text="Financieel Overzicht Page"
+               HorizontalOptions="Center" />
+
+        <!-- Picker for selecting a year -->
+        <Picker x:Name="YearPicker"
+                Title="Selecteer een jaar"
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:Int32}">
+                    <x:Int32>2025</x:Int32>
+                    <x:Int32>2026</x:Int32>
+                    <x:Int32>2027</x:Int32>
+                    <x:Int32>2028</x:Int32>
+                    <x:Int32>2029</x:Int32>
+                    <x:Int32>2030</x:Int32>
+                    <x:Int32>2031</x:Int32>
+                    <x:Int32>2032</x:Int32>
+                    <x:Int32>2033</x:Int32>
+                    <x:Int32>2034</x:Int32>
+                    <x:Int32>2035</x:Int32>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
+        <!-- Button for generating the year report -->
+        <Button Text="Jaarrapport"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Clicked="OnJaarrapportClicked" />
+    </VerticalStackLayout>
+
+</ContentPage>

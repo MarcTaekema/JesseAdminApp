@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="JesseAdminApp.NieuweKlantPage"
+             Title="Nieuwe Klant"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
+
+    <VerticalStackLayout Spacing="10" Padding="20">
+        <Label Text="Nieuwe Klant Toevoegen"
+               FontSize="24"
+               HorizontalOptions="Center" />
+
+        <Entry x:Name="NaamEntry" Placeholder="Naam" x:FieldModifier="private" />
+        <Entry x:Name="AchternaamEntry" Placeholder="Achternaam" x:FieldModifier="private" />
+        <Entry x:Name="AdresEntry" Placeholder="Straat + Huisnummer" x:FieldModifier="private" />
+        <Entry x:Name="PostcodeEntry" Placeholder="Postcode + Plaats" x:FieldModifier="private" />
+        <DatePicker x:Name="DatumVanStartPicker" x:FieldModifier="private" />
+        
+        <Button Text="Opslaan"
+                HorizontalOptions="Center"
+                Clicked="OnOpslaanClicked" />
+    </VerticalStackLayout>
+</ContentPage>

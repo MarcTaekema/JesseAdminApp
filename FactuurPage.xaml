@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="JesseAdminApp.FactuurPage">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="10">
+            <Label Text="Invoice Generator" FontSize="24" HorizontalOptions="Center" />
+
+            <Entry x:Name="CustomerNameEntry" Placeholder="Customer Name" />
+            <Entry x:Name="AddressEntry" Placeholder="Address" />
+            <Entry x:Name="PostalCodeEntry" Placeholder="Postal Code" Keyboard="Numeric" />
+            <!--<Entry x:Name="CityEntry" Placeholder="City" /> -->
+            <Entry x:Name="InvoiceNumberEntry" Placeholder="Invoice Number" Keyboard="Numeric" />
+            <Entry x:Name="TotalAmountEntry" Placeholder="Total Amount (Auto-calculated)" IsReadOnly="True" />
+
+            <Label Text="Services/Descriptions" FontSize="18" HorizontalOptions="Start" />
+            <CollectionView x:Name="DescriptionsCollectionView" SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <HorizontalStackLayout Spacing="10">
+                            <!-- Editable quantity Field -->
+                            <Entry Text="{Binding Quantity}"
+                                   Placeholder="Hoeveelheid"
+                                   Keyboard="Numeric"
+                                   WidthRequest="100" />
+
+                            <!-- Editable Description Field -->
+                            <Entry Text="{Binding Description}" 
+                                   Placeholder="Beschrijving"
+                                   HorizontalOptions="FillAndExpand" />
+
+                            <!-- Editable Amount Field -->
+                            <Entry Text="{Binding Price}" 
+                                   Placeholder="Prijs per stuk" 
+                                   Keyboard="Numeric"
+                                   WidthRequest="100" />
+                        </HorizontalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Button Text="Add Description" Clicked="OnAddDescriptionClicked" />
+            <Button Text="Remove Description" Clicked="OnRemoveDescriptionClicked"/>
+            <Button Text="Generate Invoice PDF" Clicked="OnGeneratePdfClicked" />
+
+            <Label x:Name="StatusLabel" TextColor="Green" FontSize="18" HorizontalOptions="Center" />
+
+            <Button Text="View Invoice PDF" x:Name="ViewButton" Clicked="OnViewPdfClicked" IsVisible="False" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

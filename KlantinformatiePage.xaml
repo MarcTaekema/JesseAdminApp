@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="JesseAdminApp.KlantinformatiePage"
+             Title="Klantinformatie"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
+
+    <!-- Use a Grid to contain both the ScrollView and Button -->
+    <Grid>
+        <!-- Define row heights, with the button placed at the bottom -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <!-- This takes the remaining space for ListView -->
+            <RowDefinition Height="Auto" />
+            <!-- This is for the button, which is at the bottom -->
+        </Grid.RowDefinitions>
+
+        <!-- ScrollView wrapping the entire content for scrolling -->
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout Spacing="20" Padding="20">
+                <!-- Page Title with a large, bold font and a nice background color -->
+                <Label Text="Klantinformatie"
+                       FontSize="32"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"
+                       TextColor="{DynamicResource PrimaryTextColor}" />
+
+                <!-- Add a nice separator line -->
+                <BoxView Color="{DynamicResource SeparatorColor}" HeightRequest="2" HorizontalOptions="FillAndExpand" />
+
+                <!-- ListView with custom styling, adding alternating row colors -->
+                <ListView x:Name="CustomerListView" 
+                          ItemTapped="OnCustomerTapped"
+                          SelectionMode="Single"
+                          HasUnevenRows="True"
+                          BackgroundColor="{DynamicResource ListViewBackgroundColor}"
+                          SeparatorVisibility="Default"
+                          SeparatorColor="{DynamicResource SeparatorColor}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="10" ColumnSpacing="10">
+                                    <!-- Display customer name with a subtitle or additional info if needed -->
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <!-- Customer avatar (optional) -->
+                                    <Image Source="C:\\Users\\marct\\source\\repos\\PDFGeneration\\LogoFitPriority.jpg" HeightRequest="40" WidthRequest="40" Grid.Row="0" Grid.Column="0" />
+
+                                    <!-- Customer name with a nice font and font weight -->
+                                    <Label Text="{Binding DisplayName}"
+                                           Grid.Row="0"
+                                           Grid.Column="1"
+                                           FontSize="18"
+                                           FontAttributes="Bold"
+                                           VerticalOptions="Center" />
+
+                                    <!-- Additional info or subtitle for each customer -->
+                                    <Label Text="{Binding AdditionalInfo}" 
+                                           Grid.Row="1"
+                                           Grid.Column="1"
+                                           FontSize="14"
+                                           TextColor="{DynamicResource SecondaryTextColor}" 
+                                           VerticalOptions="Center" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Button with custom styling to add a new customer -->
+        <Button Text="Nieuwe Klant" 
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                BackgroundColor="{DynamicResource ButtonBackgroundColor}"
+                TextColor="{DynamicResource ButtonTextColor}"
+                FontAttributes="Bold"
+                Padding="10,15"
+                Clicked="OnNieuweKlantClicked" 
+                Grid.Row="1" />
+        <!-- Place the button in the second row of the grid -->
+    </Grid>
+</ContentPage>
