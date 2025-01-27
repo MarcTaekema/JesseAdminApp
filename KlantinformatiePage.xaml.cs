@@ -6,15 +6,15 @@ namespace JesseAdminApp
 {
     public partial class KlantinformatiePage : ContentPage
     {
-        private readonly CustomerDatabase _database;
+        private readonly CustomerDatabase _database;            //instantie maken van dataabse
         public ObservableCollection<Customer> Customers { get; set; } = new ObservableCollection<Customer>();
 
 
         public KlantinformatiePage()
         {
             InitializeComponent();
-            _database = new CustomerDatabase();
-            LoadCustomers();
+            _database = new CustomerDatabase();             //Database koppelen aan pagina
+            LoadCustomers();                                //klanten inladen op alfabetische volgorde
         }
 
         private async void LoadCustomers()
@@ -45,6 +45,7 @@ namespace JesseAdminApp
                 await Navigation.PushAsync(new CustomerDetailPage(klantnummer));
             }
         }
+        //Naar nieuweklant pagina versturen
         private async void OnNieuweKlantClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new NieuweKlantPage());

@@ -4,17 +4,17 @@
              x:Class="JesseAdminApp.MainPage"
              BackgroundColor="{DynamicResource PageBackgroundColor}">
 
-    <VerticalStackLayout Spacing="25" Padding="30">
+    <VerticalStackLayout Spacing="25" Padding="30">     <!--    Knopjes -->
         <Button Text="Financieel Overzicht"
                 Clicked="OnFinancieelOverzichtClicked" />
 
         <Button Text="Klantinformatie"
                 Clicked="OnKlantinformatieClicked" />
 
-        <Button Text="Waar staan de facturen?"
+        <Button Text="Bestandslocatie facturen"
                 Clicked="SendToPathFacturen" />
 
-        <!-- Entry to display the path, initially hidden -->
+        <!-- veld om de bestandslocatie te laten zien-->
         <Entry x:Name="PathDisplayEntry"
                IsReadOnly="True"
                IsVisible="False"

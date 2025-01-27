@@ -36,6 +36,38 @@ namespace JesseAdminApp
                 await DisplayAlert("Error", "Customer not found.", "OK");
             }
         }
+        private async void OnFinancieleInformatieClicked(object sender, EventArgs e)
+        {
+            var klantnummerString = KlantnummerLabel.Text?.Split(":").Last().Trim();
+
+            // Attempt to parse the string to an integer
+            if (int.TryParse(klantnummerString, out int klantnummer))
+            {
+                // Fetch invoices by customer number
+                var invoices = await _FinanceDB.GetInvoicesByCustomerAsync(klantnummer);
+
+                // Check if there are invoices for the customer
+                if (invoices != null && invoices.Any())
+                {
+                    // Sum the amounts (including and excluding BTW)
+                    decimal totalAmountInclBTW = invoices.Sum(invoice => invoice.AmountInclBTW);
+                    decimal totalAmountExclBTW = invoices.Sum(invoice => invoice.AmountExclBTW);
+
+                    // Display the totals
+                    string reportMessage = $"Totaal betaald incl. BTW: {totalAmountInclBTW:C}\nTotaal betaald excl. BTW: {totalAmountExclBTW:C}";
+                    await DisplayAlert("Financiële Informatie", reportMessage, "OK");
+                }
+                else
+                {
+                    await DisplayAlert("Fout", "Geen facturen gevonden.", "OK");
+                }
+            }
+            else
+            {
+                // Handle the case where the parsing fails
+                await DisplayAlert("Fout", "Ongeldig klantnummer.", "OK");
+            }
+        }
 
         // Delete customer event handler
         private async void OnDeleteCustomerClicked(object sender, EventArgs e)

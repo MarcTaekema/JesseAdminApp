@@ -2,10 +2,10 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="JesseAdminApp.CustomerDetailPage"
-             Title="Customer Details">
+             Title="">
 
     <VerticalStackLayout Padding="20">
-        <Label Text="Customer Details"
+        <Label Text="Klant Informatie"
                FontSize="24"
                HorizontalOptions="Center" />
 
@@ -16,13 +16,18 @@
         <Label x:Name="KlantnummerLabel" FontSize="18" />
         <Label x:Name="StartDateLabel" FontSize="18" />
 
-        <Button Text="Klant Verwijderen"
-                HorizontalOptions="Center"
-                Clicked="OnDeleteCustomerClicked" />
+        <HorizontalStackLayout Spacing="20" HorizontalOptions="Center">
+            <Button Text="Klant Verwijderen"
+                    HorizontalOptions="Center"
+                    Clicked="OnDeleteCustomerClicked" />
+            <Button Text="Naar Factuurpagina"
+                    HorizontalOptions="Center"
+                    Clicked="OnNavigateToFactuurPageClicked" />
+            <Button Text="Financiële Informatie"
+                    HorizontalOptions="Center"
+                    Clicked="OnFinancieleInformatieClicked" />
+        </HorizontalStackLayout>
 
-        <Button Text="Naar Factuurpagina"
-                HorizontalOptions="Center"
-                Clicked="OnNavigateToFactuurPageClicked" />
     </VerticalStackLayout>
 
 </ContentPage>

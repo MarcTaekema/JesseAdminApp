@@ -2,33 +2,32 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="JesseAdminApp.KlantinformatiePage"
-             Title="Klantinformatie"
+             Title=""
              BackgroundColor="{DynamicResource PageBackgroundColor}">
 
-    <!-- Use a Grid to contain both the ScrollView and Button -->
+    <!-- Gebruik een Grid voor ScrollView en Button -->
     <Grid>
-        <!-- Define row heights, with the button placed at the bottom -->
+        <!-- Rijen voor de layout -->
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
-            <!-- This takes the remaining space for ListView -->
+            <!-- Ruimte voor de ListView -->
             <RowDefinition Height="Auto" />
-            <!-- This is for the button, which is at the bottom -->
+            <!-- Ruimte voor de knop -->
         </Grid.RowDefinitions>
 
-        <!-- ScrollView wrapping the entire content for scrolling -->
+        <!-- ScrollView voor scrollbare inhoud -->
         <ScrollView Grid.Row="0">
             <VerticalStackLayout Spacing="20" Padding="20">
-                <!-- Page Title with a large, bold font and a nice background color -->
+                <!-- Titel van de pagina -->
                 <Label Text="Klantinformatie"
-                       FontSize="32"
-                       FontAttributes="Bold"
+                       FontSize="24"
                        HorizontalOptions="Center"
                        TextColor="{DynamicResource PrimaryTextColor}" />
 
-                <!-- Add a nice separator line -->
+                <!-- Lijn scheidingselement -->
                 <BoxView Color="{DynamicResource SeparatorColor}" HeightRequest="2" HorizontalOptions="FillAndExpand" />
 
-                <!-- ListView with custom styling, adding alternating row colors -->
+                <!-- ListView voor klanten -->
                 <ListView x:Name="CustomerListView" 
                           ItemTapped="OnCustomerTapped"
                           SelectionMode="Single"
@@ -40,7 +39,7 @@
                         <DataTemplate>
                             <ViewCell>
                                 <Grid Padding="10" ColumnSpacing="10">
-                                    <!-- Display customer name with a subtitle or additional info if needed -->
+                                    <!-- Rijen en kolommen voor klantgegevens -->
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto" />
                                         <RowDefinition Height="Auto" />
@@ -50,10 +49,10 @@
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
 
-                                    <!-- Customer avatar (optional) -->
+                                    <!-- Klant avatar (optioneel) -->
                                     <Image Source="C:\\Users\\marct\\source\\repos\\PDFGeneration\\LogoFitPriority.jpg" HeightRequest="40" WidthRequest="40" Grid.Row="0" Grid.Column="0" />
 
-                                    <!-- Customer name with a nice font and font weight -->
+                                    <!-- Klantnaam weergeven -->
                                     <Label Text="{Binding DisplayName}"
                                            Grid.Row="0"
                                            Grid.Column="1"
@@ -61,7 +60,7 @@
                                            FontAttributes="Bold"
                                            VerticalOptions="Center" />
 
-                                    <!-- Additional info or subtitle for each customer -->
+                                    <!-- Extra informatie voor de klant -->
                                     <Label Text="{Binding AdditionalInfo}" 
                                            Grid.Row="1"
                                            Grid.Column="1"
@@ -76,7 +75,7 @@
             </VerticalStackLayout>
         </ScrollView>
 
-        <!-- Button with custom styling to add a new customer -->
+        <!-- Knop om een nieuwe klant toe te voegen -->
         <Button Text="Nieuwe Klant" 
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
@@ -86,6 +85,6 @@
                 Padding="10,15"
                 Clicked="OnNieuweKlantClicked" 
                 Grid.Row="1" />
-        <!-- Place the button in the second row of the grid -->
+        <!-- Plaats de knop in de tweede rij -->
     </Grid>
 </ContentPage>

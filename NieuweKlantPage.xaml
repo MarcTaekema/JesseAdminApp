@@ -6,16 +6,27 @@
              BackgroundColor="{DynamicResource PageBackgroundColor}">
 
     <VerticalStackLayout Spacing="10" Padding="20">
+        <!-- Titel voor de pagina -->
         <Label Text="Nieuwe Klant Toevoegen"
                FontSize="24"
                HorizontalOptions="Center" />
 
+        <!-- Naam invoerveld -->
         <Entry x:Name="NaamEntry" Placeholder="Naam" x:FieldModifier="private" />
+
+        <!-- Achternaam invoerveld -->
         <Entry x:Name="AchternaamEntry" Placeholder="Achternaam" x:FieldModifier="private" />
+
+        <!-- Adres invoerveld -->
         <Entry x:Name="AdresEntry" Placeholder="Straat + Huisnummer" x:FieldModifier="private" />
+
+        <!-- Postcode en plaats invoerveld -->
         <Entry x:Name="PostcodeEntry" Placeholder="Postcode + Plaats" x:FieldModifier="private" />
+
+        <!-- Datum van start invoerveld -->
         <DatePicker x:Name="DatumVanStartPicker" x:FieldModifier="private" />
-        
+
+        <!-- Opslaan knop -->
         <Button Text="Opslaan"
                 HorizontalOptions="Center"
                 Clicked="OnOpslaanClicked" />

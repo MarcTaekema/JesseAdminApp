@@ -4,6 +4,7 @@ using Syncfusion.Pdf;
 using Syncfusion.Pdf.Graphics;
 using Syncfusion.Pdf.Graphics.Fonts;
 using System.Collections.ObjectModel;
+using Syncfusion.Licensing;
 
 public partial class FactuurPage : ContentPage
 {
@@ -299,8 +300,10 @@ public partial class FactuurPage : ContentPage
             page.Graphics.DrawString($"Te betalen:", boldFont, PdfBrushes.Black, new Syncfusion.Drawing.PointF(StandardMargin + column2Width + 30, StandardYMargin + yPosition));
             page.Graphics.DrawString($" \u20AC {SubTotalPrice:F2}", font, PdfBrushes.Black, new Syncfusion.Drawing.PointF(StandardMargin + column1Width + column2Width + column3Width, StandardYMargin + yPosition));
 
+            int currentMonth = DateTime.Now.Month;
+            int Kwartaalnummer = (currentMonth - 1) / 3 + 1; // Quarter is 1-4 based on the month
             // Save the PDF
-            string fileName = $"Invoice_{InvoiceNumberEntry.Text}.pdf";
+            string fileName = $"Factuur_{InvoiceNumberEntry.Text}Q{Kwartaalnummer}.pdf";
             _pdfPath = Path.Combine(FileSystem.Current.AppDataDirectory, fileName);
 
             using (var stream = new FileStream(_pdfPath, FileMode.Create, FileAccess.ReadWrite))
@@ -318,9 +321,12 @@ public partial class FactuurPage : ContentPage
                 var BedragIncl = (decimal)SubTotalPrice;
 
                 var Factuurnummer = InvoiceNumberEntry.Text;
-
+                
                 // Extract the last three characters as Klantnummer
                 var Klantnummer = int.Parse(Factuurnummer.Substring(Factuurnummer.Length - 3));
+
+                int currentMonth2 = DateTime.Now.Month;
+                int Kwartaalnummer2 = (currentMonth2 - 1) / 3 + 1; // Quarter is 1-4 based on the month
 
                 // Create a new invoice object
                 var newFinanceDBAddition = new Invoice
@@ -328,7 +334,8 @@ public partial class FactuurPage : ContentPage
                     InvoiceNumber = Factuurnummer, // No .Text, as Factuurnummer is already a string
                     AmountInclBTW = BedragIncl,
                     AmountExclBTW = BedragExcl,
-                    CustomerNumber = Klantnummer // Convert string to int
+                    CustomerNumber = Klantnummer, // Convert string to int
+                    Kwartaalnummer = Kwartaalnummer2
                 };
 
                 // Save the invoice to the database

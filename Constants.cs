@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//globaal beschikbaar maken van paths van de databases enzo, gewoon super cbill
 namespace JesseAdminApp
 {
     public static class Constants

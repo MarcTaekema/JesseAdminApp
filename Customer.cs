@@ -18,10 +18,10 @@ namespace JesseAdminApp
         public string Postcode { get; set; } = string.Empty;
         public DateTime DatumVanStart { get; set; }
     }
-    public class DisplayCustomer
+    public class DisplayCustomer            //aparte klasse voor laten zien van de klant, dit is handig. idk waarom eigenlijk. 
     {
         public string DisplayName { get; set; }
-        public string Klantnummer { get; set; }  // New property for Klantnummer
+        public string Klantnummer { get; set; } 
     }
 
 

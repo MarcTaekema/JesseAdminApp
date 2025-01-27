@@ -5,10 +5,10 @@
              BackgroundColor="{DynamicResource PageBackgroundColor}">
 
     <VerticalStackLayout Spacing="25" Padding="30">
-        <Label Text="Financieel Overzicht Page"
+        <Label Text="Financieel Overzicht "
                HorizontalOptions="Center" />
 
-        <!-- Picker for selecting a year -->
+        <!-- dropdown lijst voor het kiezen van een jaar, tot 2035 lijkt me ver zat.  -->
         <Picker x:Name="YearPicker"
                 Title="Selecteer een jaar"
                 HorizontalOptions="Center"
@@ -30,11 +30,34 @@
             </Picker.ItemsSource>
         </Picker>
 
-        <!-- Button for generating the year report -->
-        <Button Text="Jaarrapport"
+        <!-- dropdown voor kwartaal -->
+        <Picker x:Name="KwartaalPicker"
+                Title="Selecteer een kwartaal"
                 HorizontalOptions="Center"
-                VerticalOptions="Center"
-                Clicked="OnJaarrapportClicked" />
+                VerticalOptions="Center">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:Int32}">
+                    <x:Int32>1</x:Int32>
+                    <x:Int32>2</x:Int32>
+                    <x:Int32>3</x:Int32>
+                    <x:Int32>4</x:Int32>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
+        <!-- Button for generating the year report -->
+        <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
+            <Button Text="Jaarrapport"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Clicked="OnJaarrapportClicked" />
+
+            <!-- Button for generating the quarter report -->
+            <Button Text="KwartaalOverzicht"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Clicked="OnKwartaalOverzichtClicked" />
+        </HorizontalStackLayout>
     </VerticalStackLayout>
 
 </ContentPage>
